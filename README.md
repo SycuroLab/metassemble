@@ -8,7 +8,7 @@ This pipeline designed to automate and control the submission of processes to th
 
 Input: paired-end fastq files.
 
-Output: output
+Output: assembled fasta files and a detailed report of the quality of the assemblies.
 
 ## Installation
 
@@ -32,7 +32,7 @@ All the parameters required to run this pipeline are specified in a config file,
 
 ## Data and list of files
 
-Specify the full path to the directory that contains your data files in the config file. You also need to have a list of sample names which contains the names of the samples to run the pipeline on, one sample per line. You can run this pipeline on any number or subset of your samples. Sample names should include everything up to the R1/R2 (or 1/2) part of the file names of the raw fastq files. See `metqc_files/list_files_example.txt` as an example. Specify the name of your list in the config file.
+Specify the full path to the directory that contains your data files in the config file. You also need to have a list of sample names which contains the names of the samples to run the pipeline on, one sample per line. You can run this pipeline on any number or subset of your samples. Sample names should include everything up to the R1/R2 (or 1/2) part of the file names of the raw fastq files. Specify the path and name of your list in the config file.
 
 If there are many samples, it may be convenient to generate the list of files using the following command, replacing `R1_001.fastq.gz` with the general suffix of your files:
 
@@ -43,9 +43,9 @@ ls | grep R1_001.fastq.gz | sed 's/_R1_001.fastq.gz//' > list_files.txt
 ## Description of other parameters
 | Parameter | Description |
 | -------------- | --------------- |
-| include_megahit | Whether or not run megahit in addition to metaspades |
-| megahit_param | Does a thing |
-| metaspades_param | does another thing |
+| list_files | Full path and name of your sample list. |
+| path | Location of input files. |
+| error_corr | If TRUE (default), include read error correction during metaspades run. |
 
 ## Running the pipeline on Synergy
 
@@ -54,7 +54,7 @@ Test the pipeline by running `snakemake -np`. This command prints out the comman
 To run the pipeline on the Synergy compute cluster, enter the following command from the project directory:
 
 ```
-snakemake --cluster-config cluster.json --cluster 'bsub -n {cluster.n} -R {cluster.resources} -W {cluster.walllim} -We {cluster.time} -M {cluster.maxmem} -oo {cluster.output} -e {cluster.error}' --jobs 100 --use-conda
+snakemake --cluster-config cluster.json --cluster 'bsub -n {cluster.n} -R {cluster.resources} -W {cluster.walllim} -We {cluster.time} -M {cluster.maxmem} -oo {cluster.output} -e {cluster.error}' --jobs 500 --use-conda
 ```
 The above command submits jobs to Synergy, one for each sample and step of the QC pipeline. Note: the file `cluster.json` contains the parameters for the LSF job submission system that Synergy uses. In most cases, this file should not be modified.
 
@@ -68,10 +68,6 @@ Snakemake will create a directory for the results of the pipeline as well as a d
 
 1) Metagenome assembly using metaspades.
 
-2) Metagenome assembly using megahit (default is off).
-
-3) QC on metagenome assembly metaquast.
-
-4) QC on metagenome assembly using checkm? 
+2) QC on metagenome assembly metaquast.
 
 
