@@ -1,7 +1,7 @@
 {
   "__default__" :
   {
-    "n" : 28,
+    "n" : 40,
     "resources" : "\"rusage[mem=5000] span[hosts=1]\"",
     "walllim" : "12:00",
     "time" : "06:00",
@@ -12,14 +12,10 @@
 
   "metaspades" :
   {
-    "time" : "40:00",
-    "walllim" : "80:00"
-  },
-
-  "megahit" :
-  {
-    "time" : "10:00",
-    "walllim" : "20:00"
+    "resources" : "\"rusage[mem=10000] span[hosts=1]\"",
+    "time" : "5:00",
+    "walllim" : "20:00",
+    "maxmem" : 250000
   },
 
   "metaquast" :
