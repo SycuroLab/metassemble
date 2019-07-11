@@ -8,9 +8,7 @@ list_files: "/home/aschick/projects/hmptest/list_files.txt"
 # Path to sequences
 path: "/home/aschick/projects/hmptest/data/rawdata/"
 
-# Choose whether to run cutadapt
-include_megahit: FALSE
-
 # Params for metaspades
+error_corr: TRUE
 
 # Params for metaquast
