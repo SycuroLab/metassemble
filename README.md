@@ -1,10 +1,10 @@
 # metassemble
 
-Snakemake pipeline for assembly of metagenomic data.
+Bioinformatics pipeline for assembly of shotgun metagenomic data, using [metaSPAdes](https://www.ncbi.nlm.nih.gov/pubmed/28298430) and [MetaQUAST](https://www.ncbi.nlm.nih.gov/pubmed/26614127).
 
 ## Overview
 
-This pipeline designed to automate and control the submission of processes to the Synergy server at the University of Calgary. Developed by Alana Schick for the lab of Dr. Laura Sycuro. 
+This pipeline is written in snakemake and designed to automate and control the submission of processes to the Synergy server at the University of Calgary. Developed by Alana Schick for the lab of Dr. Laura Sycuro. 
 
 Input: paired-end fastq files.
 
@@ -23,8 +23,10 @@ Note: you need to have **conda** and **snakemake** installed in order to run thi
 To install snakemake using conda, run the following line:
 
 ```
-conda install -c bioconda snakemake
+conda install -c bioconda -c conda-forge snakemake
 ```
+
+See the snakemake installation [webpage](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) for further details.
 
 ## Config file
 
@@ -54,7 +56,7 @@ Test the pipeline by running `snakemake -np`. This command prints out the comman
 To run the pipeline on the Synergy compute cluster, enter the following command from the project directory:
 
 ```
-snakemake --cluster-config cluster.json --cluster 'bsub -n {cluster.n} -R {cluster.resources} -W {cluster.walllim} -We {cluster.time} -M {cluster.maxmem} -oo {cluster.output} -e {cluster.error}' --jobs 500 --use-conda
+snakemake --cluster-config cluster.json --cluster 'bsub -n {cluster.n} -R {cluster.resources} -W {cluster.walllim} -We {cluster.time} -M {cluster.maxmem} -oo {cluster.output} -e {cluster.error}' --jobs 100 --use-conda
 ```
 The above command submits jobs to Synergy, one for each sample and step of the QC pipeline. Note: the file `cluster.json` contains the parameters for the LSF job submission system that Synergy uses. In most cases, this file should not be modified.
 
@@ -66,8 +68,8 @@ Snakemake will create a directory for the results of the pipeline as well as a d
 
 ### Steps
 
-1) Metagenome assembly using metaspades.
+1) Metagenome assembly using metaSPAdes. Includes error correction by default. To disable, this, set the `error_corr` parameter to `FALSE` in the `config.yaml` file. See [paper](https://genome.cshlp.org/content/27/5/824.short) for details about metaSPAdes.
 
-2) QC on metagenome assembly metaquast.
+2) QC on metagenome assembly MetaQUAST. More details [here](http://quast.sourceforge.net/metaquast).
 
 
