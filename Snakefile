@@ -1,6 +1,6 @@
-# **********************************
+# **************************************
 # * Snakefile for metassemble pipeline *
-# **********************************
+# **************************************
 
 # **** Variables ****
 
@@ -23,7 +23,7 @@ rule metaspades:
         r2 = config["path"]+"{sample}_2.fastq.gz"
     output: "output/metaspades/{sample}/scaffolds.fasta"
     params:
-        outdir = "output/metaspades/{sample}/"
+        outdir = "output/metaspades/{sample}/",
         ec = "" if config["error_corr"] else "--only-assembler"
     conda: "metassemble_files/envs/metaspades_env.yaml"
     shell: "metaspades.py -o {params.outdir} -1 {input.r1} -2 {input.r2} -t 40 {params.ec}"

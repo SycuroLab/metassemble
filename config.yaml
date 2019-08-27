@@ -1,6 +1,6 @@
-# **********************************
-# * Parameters for metqc pipeline *
-# **********************************
+# ***************************************
+# * Parameters for metassemble pipeline *
+# ***************************************
 
 # List of files
 list_files: "/home/aschick/projects/hmptest/list_files.txt"
@@ -8,7 +8,7 @@ list_files: "/home/aschick/projects/hmptest/list_files.txt"
 # Path to sequences
 path: "/home/aschick/projects/hmptest/data/rawdata/"
 
-# Params for metaspades
+# Parameters for metaspades
 error_corr: TRUE
 
 # Params for metaquast
