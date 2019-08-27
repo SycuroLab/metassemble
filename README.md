@@ -66,6 +66,8 @@ Snakemake will create a directory for the results of the pipeline as well as a d
 
 ## Pipeline summary
 
+![Rulegraph](./metassemble_files/metassemble_dag.png)
+
 ### Steps
 
 1) Metagenome assembly using metaSPAdes. Includes error correction by default. To disable, this, set the `error_corr` parameter to `FALSE` in the `config.yaml` file. See [paper](https://genome.cshlp.org/content/27/5/824.short) for details about metaSPAdes.
