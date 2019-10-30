@@ -15,7 +15,9 @@ SAMPLES = SAMPLES[0].tolist()
 # **** Rules ****
 
 rule all:
-    input: "output/metaquast/report.html"
+    input:
+        "output/metaquast/report.html",
+        expand("output/metaspades/{sample}/{sample}_counts.txt", sample=SAMPLES)
 
 rule metaspades:
     input:
