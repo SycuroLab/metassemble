@@ -19,8 +19,8 @@ rule all:
 
 rule metaspades:
     input:
-        r1 = config["path"]+"{sample}_1.fastq.gz",
-        r2 = config["path"]+"{sample}_2.fastq.gz"
+        r1 = config["path"]+"{sample}_bmtagged_1.fastq",
+        r2 = config["path"]+"{sample}_bmtagged_2.fastq"
     output: "output/metaspades/{sample}/scaffolds.fasta"
     params:
         outdir = "output/metaspades/{sample}/",
@@ -32,7 +32,7 @@ rule metaquast:
     input: expand("output/metaspades/{sample}/scaffolds.fasta", sample=SAMPLES)
     output: "output/metaquast/report.html"
     conda: "metassemble_files/envs/metaquast_env.yaml"
-    shell: "metaquast.py {input} -o output/metaquast -t 40"
+    shell: "metaquast.py {input} -o output/metaquast -t 56"
 
 rule reformat:
     input:
