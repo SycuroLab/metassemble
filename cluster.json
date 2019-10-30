@@ -20,7 +20,8 @@
 
   "metaquast" :
   {
-    "time" : "5:00",
-    "walllim": "10:00"
+    "time" : "20:00",
+    "walllim": "40:00",
+    "maxmem" : 250000
   }
 }
