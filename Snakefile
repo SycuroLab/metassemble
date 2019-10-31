@@ -44,8 +44,9 @@ rule index_reference:
 rule map:
     input:
         r1 = config["path"]+"{sample}_bmtagged_1.fastq",
-        r2 = config["path"]+"{sample}_bmtagged_2.fastq"
-    output: expand("output/mapping/{sample}/{sample}_idxstats.txt", sample=SAMPLES)
+        r2 = config["path"]+"{sample}_bmtagged_2.fastq",
+        ref = "output/assembly/scaffolds.fasta.fai"
+    output: "output/mapping/{sample}/{sample}_idxstats.txt"
     params:
         s = "{sample}"
     conda: "metassemble_files/envs/metassemble_env.yaml"
