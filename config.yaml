@@ -2,11 +2,15 @@
 # * Parameters for metassemble pipeline *
 # ***************************************
 
-# List of files
-list_files: "/home/aschick/projects/hmptest/list_files.txt"
+# List of samples
+list_files: "/home/aschick/projects/arrieta/list_files_test.txt"
 
 # Path to sequences
-path: "/home/aschick/projects/hmptest/data/rawdata/"
+path: "/home/aschick/projects/arrieta/metqc/data/bmtagger/"
+
+# Filenames to be used for assembly (metaspades)
+forward: "/home/aschick/projects/arrieta/metassemble/data/left.fastq"
+reverse: "/home/aschick/projects/arrieta/metassemble/data/right.fastq"
 
 # Parameters for metaspades
 error_corr: TRUE
