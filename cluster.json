@@ -2,9 +2,9 @@
   "__default__" :
   {
     "n" : 28,
-    "resources" : "\"rusage[mem=5000] span[hosts=1]\"",
-    "walllim" : "12:00",
-    "time" : "06:00",
+    "resources" : "\"rusage[mem=4000] span[hosts=1]\"",
+    "walllim" : "01:00",
+    "time" : "00:30",
     "maxmem" : 20000,
     "output" : "logs/{rule}.{wildcards}.out",
     "error" : "logs/{rule}.{wildcards}.err"
