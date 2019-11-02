@@ -39,7 +39,7 @@ rule index_reference:
     input: "output/assembly/scaffolds.fasta"
     output: "output/assembly/scaffolds.fasta.fai"
     conda: "metassemble_files/envs/metassemble_env.yaml"
-    shell: "bowtie2-build --seed 1 {input} output/assembly/bowtie_db/reference; samtools faidx {input}"
+    shell: "mkdir output/assembly/bowtie_db; bowtie2-build --seed 1 {input} output/assembly/bowtie_db/reference; samtools faidx {input}"
 
 rule map:
     input:

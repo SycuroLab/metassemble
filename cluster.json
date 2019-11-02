@@ -1,7 +1,7 @@
 {
   "__default__" :
   {
-    "n" : 40,
+    "n" : 28,
     "resources" : "\"rusage[mem=5000] span[hosts=1]\"",
     "walllim" : "12:00",
     "time" : "06:00",
@@ -12,7 +12,7 @@
 
   "metaspades" :
   {
-    "resources" : "\"rusage[mem=10000] span[hosts=1]\"",
+    "resources" : "\"rusage[mem=100000] span[hosts=1]\"",
     "time" : "48:00",
     "walllim" : "72:00",
     "maxmem" : 250000,
@@ -23,6 +23,6 @@
   {
     "time" : "10:00",
     "walllim": "20:00",
-    "maxmem" : 250000,
+    "maxmem" : 100000,
   }
 }
