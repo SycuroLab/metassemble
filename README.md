@@ -96,4 +96,23 @@ The above command submits jobs to Synergy, one for each sample and step of the Q
 
 Snakemake will create a directory for the results of the pipeline as well as a directory for log files. Log files of each step of the pipeline will be written to the `logs` directory.
 
+## Notes
+
+### Choosing k-mer size for metaspades.
+
+Max k-mer depends on the read length of your library. Generally for 150 bp libraries, use a max size of 99. For 250 bp libraries, use 127. 
+
+NEED TO ADD THIS PARAMETER TO THE CONFIG FILE
+
+### The output of metaquast is EXTENSIVE. The metrics of particular interest are:
+
+* Number of contigs
+	* a smaller number means you are more likely to have larger contigs
+* N50
+	* The minimum contig length needed to cover 50 percent of the genomc
+	* Similar to median contig length, but weighted towards longer contigs
+	* Larger is generally better
+* Total length
+	* Longer = more bps incorporated into your assembly
+
 
